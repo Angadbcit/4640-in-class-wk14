@@ -1,0 +1,16 @@
+#cloud-config
+users:
+  - name: devops
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - <YOUR_PUBLIC_KEY>
+
+packages:
+  - nginx
+  - git
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl start nginx
+  - echo "Welcome to your Terraform VM" > /home/devops/welcome.txt

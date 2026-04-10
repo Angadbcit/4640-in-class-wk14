@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# assuming you have a key pair named aws-4640 this will remove that key from your aws account
+aws ec2 delete-key-pair --key-name aws-4640
+
+
