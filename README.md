@@ -26,3 +26,47 @@ This will add the newly created key to our logged in aws account.
 ```
 
 This removes the key from our aws account, as it is no longer needed.
+
+## Error Fixing
+
+### Error 1
+
+![Error 1](sc/err1.png)
+
+`route_tble_id` should be renamed to `route_table_id`. It was a spelling error.
+
+### Error 2
+
+![Error 2](sc/err2.png)
+
+On line 73, `route_tble_id` should be renamed to `route_table_id`. It was a spelling error.
+
+### Error 3
+
+![Error 3](sc/err3.png)
+
+On line 80, `subnt_id` should be renamed to `subnet_id`. It was a spelling error.
+
+### Error 4
+
+![Error 4](sc/err4.png)
+
+On line 112, `from_prt` should be renamed to `from_port`. It was a spelling error.
+
+### Error 5
+
+![Error 5](sc/err5.png)
+
+On line 134, `file("${path.module}/module/scripts/cloud-init.yaml")` is not the correct path compared to our file structure.
+
+The correct path is: `file("${path.module}/scripts/cloud-init.yaml")`
+
+### Error 6
+
+![Error 1](sc/err6.png)
+
+On line 137, `aws_sbnet.web.id` should be renamed to `aws_subnet.web.id`. It was a spelling error.
+
+## Successful Teraform Apply
+
+![success](sc/success.png)

@@ -70,14 +70,14 @@ resource "aws_route_table" "web" {
 # add route to to route table
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route
 resource "aws_route" "default_route" {
-  route_tble_id         = aws_route_table.web.id
+  route_table_id         = aws_route_table.web.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.web-gw.id
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
 resource "aws_route_table_association" "web" {
-  subnt_id      = aws_subnet.web.id
+  subnet_id      = aws_subnet.web.id
   route_table_id = aws_route_table.web.id
 }
 
@@ -109,7 +109,7 @@ resource "aws_vpc_security_group_ingress_rule" "web-http" {
   security_group_id = aws_security_group.web.id
 
   cidr_ipv4   = "0.0.0.0/0"
-  from_prt   = 80
+  from_port   = 80
   ip_protocol = "tcp"
   to_port     = 80
 }
@@ -131,10 +131,10 @@ module "frontend" {
   ec2_name               = "debian"
   ec2_role               = "frontend-server"
   ami                    = data.aws_ami.debian.id
-  user_data              = file("${path.module}/module/scripts/cloud-init.yaml")
+  user_data              = file("${path.module}/scripts/cloud-init.yaml")
   key_name               = "aws-4640"
   vpc_security_group_ids = [aws_security_group.web.id]
-  subnet_id              = aws_sbnet.web.id
+  subnet_id              = aws_subnet.web.id
 }
 
 output "frontend" {
