@@ -67,6 +67,6 @@ The correct path is: `file("${path.module}/scripts/cloud-init.yaml")`
 
 On line 137, `aws_sbnet.web.id` should be renamed to `aws_subnet.web.id`. It was a spelling error.
 
-## Successful Teraform Apply
+## Successful Terraform Apply
 
 ![success](sc/success.png)
